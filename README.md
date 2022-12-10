@@ -2,6 +2,11 @@
 
 ## Set up
 
+```bash
+git clone https://github.com/truonghm/pi_project.git
+cd pi_project
+```
+
 - Python version: 3.9
 
 ```bash
