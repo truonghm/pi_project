@@ -1,4 +1,3 @@
-# test the Node class
 from __future__ import annotations
 import unittest
 
@@ -16,20 +15,22 @@ class TestClient(unittest.TestCase):
 		client.id = 1
 		self.assertEqual(client.id, 1)
 
-	def test_name_setter(self):
+	def test_name_getter(self):
 		client = Client(name = 'Duck')
 		self.assertEqual(client.name, 'Duck')
 
-	def test_name_getter(self):
+	def test_name_setter(self):
 		client = Client()
 		client.name = 'Duck'
 		self.assertEqual(client.name, 'Duck')
 
-	def test_status_setter(self):
-		client = Client(status = ClientStatus.VIP)
-		self.assertEqual(client.status, ClientStatus.VIP)
-
 	def test_status_getter(self):
-		client = Client()
-		client.status = ClientStatus.VIP
-		self.assertEqual(client.status, ClientStatus.VIP)
+		for status in ClientStatus:
+			client = Client(status = eval(f"ClientStatus.{status.name}"))
+			self.assertEqual(client.status, eval(f"ClientStatus.{status.name}"))
+
+	def test_status_setter(self):
+		for status in ClientStatus:
+			client = Client()
+			client.status = eval(f"ClientStatus.{status.name}")
+			self.assertEqual(client.status, eval(f"ClientStatus.{status.name}"))

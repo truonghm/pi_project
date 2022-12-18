@@ -1,9 +1,23 @@
 from __future__ import annotations
 from .ClientStatus import ClientStatus
-from enum import auto
+from abc import ABC, abstractmethod
 
-class Client:
-    def __init__(self: Client, id: int = -1, name: str= '', status: auto = ClientStatus.UNDEFINED):
+class IClient(ABC):
+    @property
+    @abstractmethod
+    def id(self: IClient) -> int: ...
+
+    @property
+    @abstractmethod
+    def name(self: IClient) -> str: ...
+
+    @property
+    @abstractmethod
+    def status(self: IClient) -> ClientStatus: ...
+
+
+class Client(IClient):
+    def __init__(self: Client, id: int = -1, name: str = '', status: ClientStatus = ClientStatus.UNDEFINED):
         self.__id = id
         self.__name = name
         self.__status = status
@@ -25,9 +39,9 @@ class Client:
         self.__name = name
 
     @property
-    def status(self: Client) -> auto:
+    def status(self: Client) -> ClientStatus:
         return self.__status
 
     @status.setter
-    def status(self: Client, status: auto):
+    def status(self: Client, status: ClientStatus):
         self.__status = status

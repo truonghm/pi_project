@@ -10,7 +10,8 @@ class UserDataAccess:
     @classmethod
     def static_init(cls):
         cls.__table_name = 'users'
-        cls.__table_description = ['client_id', 'date_of_birth', 'email_address', 'first name', 'surname',
+        cls.__table_description = [
+            'client_id', 'date_of_birth', 'email_address', 'first name', 'surname',
                                    'has_credit_limit',
                                    'credit_limit']
         cls.__table_data_types = [int, datetime.date, str, str, str, bool, int]
